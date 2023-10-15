@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import * as React from "react";
 import type { AppProps } from "next/app";
+import { ChakraProvider } from "@chakra-ui/react";
 import { RainbowKitProvider, darkTheme, lightTheme } from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
 import NextNProgress from "nextjs-progressbar";
@@ -38,15 +40,21 @@ const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
   return (
     <WagmiConfig config={wagmiConfig}>
       <NextNProgress />
+
+        
+
       <RainbowKitProvider chains={appChains.chains} avatar={BlockieAvatar} theme={darkTheme()}>
+        <ChakraProvider>
         <div className="bg-primary flex flex-col min-h-screen text-primary-content font-space-grotesk">
           <Header />
 
-          <main className="relative flex flex-col flex-1">
-            <Component {...pageProps} />
-          </main>
-          <Footer />
-        </div>
+
+            <main className="relative flex flex-col flex-1">
+              <Component {...pageProps} />
+            </main>
+            <Footer />
+          </div>
+        </ChakraProvider>
         <Toaster />
       </RainbowKitProvider>
     </WagmiConfig>
