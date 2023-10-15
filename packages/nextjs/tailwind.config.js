@@ -7,32 +7,6 @@ module.exports = {
   daisyui: {
     themes: [
       {
-        scaffoldEth: {
-          primary: "#C8F5FF",
-          "primary-content": "#026262",
-          secondary: "#89d7e9",
-          "secondary-content": "#088484",
-          accent: "#026262",
-          "accent-content": "#E9FBFF",
-          neutral: "#088484",
-          "neutral-content": "#F0FCFF",
-          "base-100": "#F0FCFF",
-          "base-200": "#E1FAFF",
-          "base-300": "#C8F5FF",
-          "base-content": "#088484",
-          info: "#026262",
-          success: "#34EEB6",
-          warning: "#FFCF72",
-          error: "#FF8863",
-
-          "--rounded-btn": "9999rem",
-
-          ".tooltip": {
-            "--tooltip-tail": "6px",
-          },
-        },
-      },
-      {
         scaffoldEthDark: {
           primary: "#0f1313",
           "primary-content": "#C8F5FF",
@@ -91,7 +65,9 @@ module.exports = {
     // Extend Tailwind classes (e.g. font-space-grotesk, animate-grow)
     extend: {
       colors: {
-        customOrange: "#ECB418"
+        customGold: "#ECB418",
+        customBlue: "#C8F5FF",
+        customLightBlue: "#C7F5FF"
       },
       fontFamily: {
         "space-grotesk": ["Space Grotesk", "sans-serif"],
