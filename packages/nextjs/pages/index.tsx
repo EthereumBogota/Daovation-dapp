@@ -1,80 +1,12 @@
-import { useState } from "react";
-import Image from "next/image";
 import type { NextPage } from "next";
-import { MetaHeader } from "~~/components/MetaHeader";
+import Hero from "~~/components/Hero";
+import Navbar from "~~/components/Navbar";
 
 const Home: NextPage = () => {
-  const [open, setOpen] = useState(false);
   return (
     <>
-      <>
-        <nav className="text-white flex md:justify-around items-center p-[40px] justify-between">
-          <div>
-            <h1 className="text-2xl">DAOVATION</h1>
-          </div>
-
-          <div>
-            <ul className="md:flex gap-[50px] text-sm hidden">
-              <li>Home</li>
-              <li>Eventos</li>
-              <li>Explore</li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-2xl md:block hidden">Crear eventos</h3>
-          </div>
-
-          <div
-            onClick={() => setOpen(!open)}
-            className={`z-[500px]  ${open ? "text-gray-900" : ""} text-3xl md:hidden `}
-          >
-            <Image src={open ? "/icon-close.svg" : "/icon-hamburger.svg"} alt="icon" width={20} height={20}></Image>
-          </div>
-
-          <div
-            className={`md:hidden text-white absolute w-2/3 h-screen z-10
-      px-7 py-2 font-medium bg-[#141414] top-0 duration-300 ${open ? "left-0 block" : "right-0 hidden"}`}
-          >
-            <ul className="flex flex-col justify-center h-[300px] gap-10 py-2 text-lg mt-[200px]">
-              <li onClick={() => setOpen(!open)}>Retail</li>
-
-              <li onClick={() => setOpen(!open)}>Get Started</li>
-              <li onClick={() => setOpen(!open)}>Our Solutions</li>
-              <li onClick={() => setOpen(!open)}>COVID 19</li>
-              <li onClick={() => setOpen(!open)}>CAMPAIGNS</li>
-              <li onClick={() => setOpen(!open)}>RETAIL</li>
-              <li onClick={() => setOpen(!open)}>ABOUT US</li>
-            </ul>
-          </div>
-        </nav>
-      </>
-
-      <header className="text-white text-sm mt-[100px] flex flex-col items-center justify-center   ">
-        <div>
-          <div>
-            <h3 className="text-center text-3xl">WELCOME TO DAOVATION</h3>
-          </div>
-          <div className="relative z-10">
-            <div className="overflow-hidden absolute -top-[30px] -left-[50px] indexz10 ">
-              <Image src="/Icosahedron.png" width={180} height={350} alt="icon" className="z-10"></Image>
-            </div>
-            <div className="z-20 flex">
-              <h1 className="md:text-8xl text-center mt-[60px] z-20 flex text-5xl font-bold">
-                Platform to create events <br />
-                and generate rewards.
-              </h1>
-            </div>
-            <p className="text-2xl mt-[30px] text-center ">
-              DAOVATION is an ever expanding ecosystem connected
-              <br /> Events and rewards,built for a decentralized future
-            </p>
-          </div>
-          <div className="absolute right-0 top-[350px] overflow-hidden">
-            <Image src="/Icosahedron.png" width={350} height={350} alt="icon" className="overflow-hidden"></Image>
-          </div>
-        </div>
-      </header>
-
+      <Navbar />
+      <Hero />
       <div className="mt-[300px]">
         <div className="">
           <div className="flex justify-around flex-col md:flex-row">

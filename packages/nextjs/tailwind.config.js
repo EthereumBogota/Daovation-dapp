@@ -90,6 +90,9 @@ module.exports = {
   theme: {
     // Extend Tailwind classes (e.g. font-space-grotesk, animate-grow)
     extend: {
+      colors: {
+        customOrange: "#ECB418"
+      },
       fontFamily: {
         "space-grotesk": ["Space Grotesk", "sans-serif"],
       },
@@ -115,6 +118,10 @@ module.exports = {
         "pulse-fast": "pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         zoom: "zoom 1s ease infinite",
       },
+      backgroundImage: {
+        "hero-image": "url('/hero-image.png')",
+        "shadow": "linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))"
+      }
     },
   },
 };
