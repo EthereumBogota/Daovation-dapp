@@ -7,6 +7,32 @@ module.exports = {
   daisyui: {
     themes: [
       {
+        scaffoldEth: {
+          primary: "#C8F5FF",
+          "primary-content": "#026262",
+          secondary: "#89d7e9",
+          "secondary-content": "#088484",
+          accent: "#026262",
+          "accent-content": "#E9FBFF",
+          neutral: "#088484",
+          "neutral-content": "#F0FCFF",
+          "base-100": "#F0FCFF",
+          "base-200": "#E1FAFF",
+          "base-300": "#C8F5FF",
+          "base-content": "#088484",
+          info: "#026262",
+          success: "#34EEB6",
+          warning: "#FFCF72",
+          error: "#FF8863",
+
+          "--rounded-btn": "9999rem",
+
+          ".tooltip": {
+            "--tooltip-tail": "6px",
+          },
+        },
+      },
+      {
         scaffoldEthDark: {
           primary: "#0f1313",
           "primary-content": "#C8F5FF",
@@ -64,10 +90,6 @@ module.exports = {
   theme: {
     // Extend Tailwind classes (e.g. font-space-grotesk, animate-grow)
     extend: {
-      colors: {
-        customGold: "#ECB418",
-        customBlue: "#C8F5FF"
-      },
       fontFamily: {
         "space-grotesk": ["Space Grotesk", "sans-serif"],
       },
@@ -93,10 +115,6 @@ module.exports = {
         "pulse-fast": "pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         zoom: "zoom 1s ease infinite",
       },
-      backgroundImage: {
-        "hero-image": "url('/hero-image.png')",
-        "shadow": "linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))"
-      }
     },
   },
 };
