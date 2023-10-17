@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import * as React from "react";
 import {
-  Button,
   Center,
   Modal,
   ModalBody,
@@ -13,18 +12,18 @@ import {
   Spinner,
   useDisclosure,
 } from "@chakra-ui/react";
-
-/* import { ExternalLinkIcon } from "@chakra-ui/icons"; */
 import { useQRCode } from "next-qrcode";
 import { io } from "socket.io-client";
 
-const linkDownloadPolygonIDWalletApp = "https://0xpolygonid.github.io/tutorials/wallet/wallet-overview/#quick-start";
+const linkDownloadPolygonIDWalletApp =
+  "https://0xpolygonid.github.io/tutorials/wallet/wallet-overview/#polygon-id-wallet-app";
 type PolygonIDVerifierProps = {
-  credentialType: any;
-  issuerOrHowToLink: any;
-  onVerificationResult: any;
-  publicServerURL: any;
-  localServerURL: any;
+  credentialType: string;
+  issuerOrHowToLink: string;
+  onVerificationResult: React.Dispatch<React.SetStateAction<boolean>>;
+  publicServerURL: string;
+  localServerURL: string;
+  closeLoginModal: Function;
 };
 function PolygonIDVerifier({
   credentialType,
@@ -32,6 +31,7 @@ function PolygonIDVerifier({
   onVerificationResult,
   publicServerURL,
   localServerURL,
+  closeLoginModal,
 }: PolygonIDVerifierProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [sessionId, setSessionId] = useState("");
@@ -41,8 +41,12 @@ function PolygonIDVerifier({
   const [verificationMessage, setVerfificationMessage] = useState("");
   const [socketEvents, setSocketEvents] = useState<any[]>([]);
   const { Canvas } = useQRCode();
-  // serverUrl is localServerURL if not running in prod
-  // Note: the verification callback will always come from the publicServerURL
+
+  const onOpenModal = () => {
+    closeLoginModal();
+    onOpen();
+  };
+
   let serverUrl: string;
   if (typeof window !== "undefined") {
     serverUrl = window.location.href.startsWith("https") ? publicServerURL : localServerURL;
@@ -54,7 +58,6 @@ function PolygonIDVerifier({
     socket.on("connect", () => {
       setSessionId(socket.id);
 
-      // only watch this session's events
       socket.on(socket.id, arg => {
         setSocketEvents(socketEvents => [...socketEvents, arg]);
       });
@@ -75,7 +78,6 @@ function PolygonIDVerifier({
     }
   }, [getQrCodeApi, sessionId]);
 
-  // socket event side effects
   useEffect(() => {
     if (socketEvents.length) {
       const currentSocketEvent = socketEvents[socketEvents.length - 1];
@@ -90,7 +92,7 @@ function PolygonIDVerifier({
           if (currentSocketEvent.status === "DONE") {
             setVerfificationMessage("✅ Verified proof");
             setTimeout(() => {
-              reportVerificationResult(true);
+              onVerificationResult(true);
             }, 2000);
             socket.close();
           } else {
@@ -101,40 +103,42 @@ function PolygonIDVerifier({
     }
   }, [socket, socketEvents]);
 
-  // callback, send verification result back to app
-  const reportVerificationResult = (result: boolean) => {
-    onVerificationResult(result);
-  };
-
   function openInNewTab(url: string) {
     const win = window.open(url, "_blank");
     win?.focus();
   }
 
+  const logSessionId = () => {
+    alert(sessionId);
+  };
+
   return (
     <>
       <div>
         {sessionId ? (
-          <Button colorScheme="purple" onClick={onOpen} margin={4}>
-            Prove access rights
-          </Button>
+          <button className="btn bg-purple-600 border-none m-2 hover:bg-purple-700" onClick={onOpenModal}>
+            Polygon ID
+          </button>
         ) : (
-          <Spinner />
+          <>
+            <button onClick={logSessionId}> ver sesion</button>
+            <Spinner />
+          </>
         )}
 
         {qrCodeData && (
           <Modal isOpen={isOpen} onClose={onClose} isCentered>
             <ModalOverlay />
-            <ModalContent>
-              <ModalHeader>
+            <ModalContent borderRadius={"20px"} bgColor={"#0F172A"}>
+              <ModalHeader color={"#C7F5FF"} fontSize={{ base: "14px", md: "16px" }} w={"90%"}>
                 Scan this QR code from your{" "}
                 <a href={linkDownloadPolygonIDWalletApp} target="_blank" rel="noreferrer">
                   Polygon ID Wallet App
                 </a>{" "}
                 to prove access rights
               </ModalHeader>
-              <ModalCloseButton />
-              <ModalBody textAlign={"center"} color={"red"} fontSize={"12px"}>
+              <ModalCloseButton color={"white"} />
+              <ModalBody textAlign={"center"} color={"#C8F5FF"} fontSize={"12px"}>
                 {isHandlingVerification && (
                   <div>
                     <p>Authenticating...</p>
@@ -150,7 +154,7 @@ function PolygonIDVerifier({
                         errorCorrectionLevel: "M",
                         margin: 3,
                         scale: 4,
-                        width: 400,
+                        width: 350,
                         color: {
                           dark: "#010599FF",
                           light: "#FFBF60FF",
@@ -167,23 +171,19 @@ function PolygonIDVerifier({
                 {qrCodeData.body.reason && <p>Reason: {qrCodeData.body.reason}</p>} */}
               </ModalBody>
 
-              <ModalFooter>
-                <Button
-                  fontSize={"10px"}
-                  margin={1}
-                  colorScheme="purple"
+              <ModalFooter display={"flex"} justifyContent={"space-between"}>
+                <button
+                  className="btn bg-purple-600 border-none m-2 hover:bg-purple-700 text-[.6em] md:text-[.65em] normal-case"
                   onClick={() => openInNewTab(linkDownloadPolygonIDWalletApp)}
                 >
                   Download the Polygon ID Wallet App {/* <ExternalLinkIcon marginLeft={2} /> */}
-                </Button>
-                <Button
-                  fontSize={"10px"}
-                  margin={1}
-                  colorScheme="purple"
+                </button>
+                <button
+                  className="btn bg-purple-600 border-none m-2 hover:bg-purple-700 text-[.6em] md:text-[.65em] normal-case"
                   onClick={() => openInNewTab(issuerOrHowToLink)}
                 >
                   Get a {credentialType} VC {/* <ExternalLinkIcon marginLeft={2} /> */}
-                </Button>
+                </button>
               </ModalFooter>
             </ModalContent>
           </Modal>

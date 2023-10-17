@@ -17,7 +17,7 @@ export default function LandingCards(): React.ReactElement {
           <div className="flex flex-col items-center justify-center p-8 gap-8 flex-1 my-4">
             <Image src={"/log-in.svg"} alt="Log in" width={120} height={120} />
             <h3 className="text-xl text-center">Explore exciting DAOs Events | Register with Ease</h3>
-            <button className="btn">Register</button>
+            <button className="btn">Explore</button>
           </div>
         </div>
       </div>

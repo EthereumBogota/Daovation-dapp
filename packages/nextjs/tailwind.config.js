@@ -66,8 +66,7 @@ module.exports = {
     extend: {
       colors: {
         customGold: "#ECB418",
-        customBlue: "#C8F5FF",
-        customLightBlue: "#C7F5FF"
+        customBlue: "#C8F5FF"
       },
       fontFamily: {
         "space-grotesk": ["Space Grotesk", "sans-serif"],

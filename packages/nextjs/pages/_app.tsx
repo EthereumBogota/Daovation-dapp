@@ -10,6 +10,7 @@ import { useDarkMode } from "usehooks-ts";
 import { WagmiConfig } from "wagmi";
 import { Footer } from "~~/components/Footer";
 import { Header } from "~~/components/Header";
+import Navbar from "~~/components/Navbar";
 import { BlockieAvatar } from "~~/components/scaffold-eth";
 import { useNativeCurrencyPrice } from "~~/hooks/scaffold-eth";
 import { useGlobalState } from "~~/services/store/store";
@@ -42,15 +43,14 @@ const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
       <RainbowKitProvider chains={appChains.chains} avatar={BlockieAvatar} theme={darkTheme()}>
         <ChakraProvider>
           <div className="bg-primary flex flex-col min-h-screen text-primary-content font-space-grotesk">
-            <Header />
-
+            <Navbar />
             <main className="relative flex flex-col flex-1">
               <Component {...pageProps} />
             </main>
             <Footer />
           </div>
         </ChakraProvider>
-        <Toaster />
+        {/* <Toaster /> */}
       </RainbowKitProvider>
     </WagmiConfig>
   );
