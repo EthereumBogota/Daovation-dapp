@@ -2,6 +2,7 @@ node_modules
 
 # dependencies, yarn, etc
 # yarn / eslint
+.env
 .yarn/*
 !.yarn/patches
 !.yarn/plugins

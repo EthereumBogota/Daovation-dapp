@@ -38,7 +38,7 @@ export default function LoginModal(): React.ReactElement {
           <div className="flex flex-col justify-center items-center gap-2 my-4 flex-1">
             <p className="text-center p-3">Totally anonymous with</p>
             <PolygonIDVerifier
-              publicServerURL="https://bf15-181-237-171-65.ngrok-free.app/"
+              publicServerURL="https://562a-201-184-127-58.ngrok-free.app"
               localServerURL="http://localhost:8080"
               credentialType={"KYCAgeCredential"}
               issuerOrHowToLink={"https://issuer-demo.polygonid.me/main"}
