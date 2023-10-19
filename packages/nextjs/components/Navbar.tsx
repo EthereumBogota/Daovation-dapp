@@ -50,12 +50,14 @@ export default function Navbar(): React.ReactElement {
         open ? "right-0 block" : "right-0 hidden"
       }`}
       >
-        <button className="btn md:hidden block mx-auto">Log in</button>
+        <button className="btn md:hidden block mx-auto" onClick={openLoginModal}>
+          Log in
+        </button>
         <ul className="flex flex-col justify-center h-[300px] gap-10 text-lg text-center">
           <Link href={"/"} className="hover:text-blue-300">
             <li onClick={() => setOpen(!open)}>Home</li>
           </Link>
-          <Link href={"/"} className="hover:text-blue-300">
+          <Link href={"/events"} className="hover:text-blue-300">
             <li onClick={() => setOpen(!open)}>Events</li>
           </Link>
           <Link href={"/"} className="hover:text-blue-300">

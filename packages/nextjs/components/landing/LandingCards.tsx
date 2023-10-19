@@ -1,10 +1,15 @@
 import Image from "next/image";
+import router from "next/router";
 
 export default function LandingCards(): React.ReactElement {
+  const goToEvents = () => {
+    router.push("/events");
+  };
+
   return (
     <section id="cards" className="flex flex-col justify-center items-center my-5 md:my-10 text-white relative">
       <div className="max-w-[1100px] flex flex-col justify-center items-center p-5 md:p-0 gap-10 w-full">
-        <h2 style={{ fontWeight: "bold" }} className="text-5xl p-5 text-center">
+        <h2 className="text-5xl p-5 text-center font-bold">
           Ready to Dive In? Choose Your Path to <span className="text-customGold">Participation</span>
         </h2>
         <div className="flex flex-col items-center justify-evenly md:flex-row w-full">
@@ -17,7 +22,9 @@ export default function LandingCards(): React.ReactElement {
           <div className="flex flex-col items-center justify-center p-8 gap-8 flex-1 my-4">
             <Image src={"/log-in.svg"} alt="Log in" width={120} height={120} />
             <h3 className="text-xl text-center">Explore exciting DAOs Events | Register with Ease</h3>
-            <button className="btn">Explore</button>
+            <button onClick={goToEvents} className="btn">
+              Explore
+            </button>
           </div>
         </div>
       </div>
