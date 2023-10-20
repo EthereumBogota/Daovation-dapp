@@ -25,7 +25,7 @@ export default function Navbar(): React.ReactElement {
           <Link href={"/events"} className="hover:text-blue-300 transition-all grow">
             <li>Events</li>
           </Link>
-          <Link href={"/"} className="hover:text-blue-300 transition-all grow">
+          <Link href={"/daos"} className="hover:text-blue-300 transition-all grow">
             <li>DAOs</li>
           </Link>
         </ul>

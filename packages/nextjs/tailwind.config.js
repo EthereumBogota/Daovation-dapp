@@ -64,6 +64,9 @@ module.exports = {
   theme: {
     // Extend Tailwind classes (e.g. font-space-grotesk, animate-grow)
     extend: {
+      backgroundImage: {
+        logo : "url('/ethbogota-logo.png')",
+      },
       colors: {
         customGold: "#ECB418",
         customBlue: "#C8F5FF"
