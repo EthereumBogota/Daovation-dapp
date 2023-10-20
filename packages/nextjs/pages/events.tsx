@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import router from "next/router";
+import { getAccount } from "@wagmi/core";
 import type { NextPage } from "next";
 import EventCard from "~~/components/eventsPage/EventCard";
 
@@ -43,6 +45,18 @@ const goHome = () => {
 };
 
 const Events: NextPage = () => {
+  const [connectedAddress, setConnectedAddress]: any = useState();
+  const [addressIsConnected, setAddressIsConnected] = useState(false);
+  useEffect(() => {
+    // interval check whether user has connected or disconnected wallet
+    const interval = setInterval(() => {
+      const { address, isConnected } = getAccount();
+      setConnectedAddress(address);
+      setAddressIsConnected(isConnected);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
   return (
     <article className="flex flex-col items-center justify-center w-full px-5 max-w-[1100px] mx-auto">
       <h1 className="text-3xl md:text-6xl p-4 font-bold  text-center">Upcoming Events</h1>

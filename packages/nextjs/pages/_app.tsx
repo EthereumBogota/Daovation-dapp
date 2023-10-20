@@ -12,6 +12,7 @@ import { Footer } from "~~/components/Footer";
 import { Header } from "~~/components/Header";
 import Navbar from "~~/components/Navbar";
 import { BlockieAvatar } from "~~/components/scaffold-eth";
+import { AuthProvider } from "~~/context/Authcontext";
 import { useNativeCurrencyPrice } from "~~/hooks/scaffold-eth";
 import { useGlobalState } from "~~/services/store/store";
 import { wagmiConfig } from "~~/services/web3/wagmiConfig";
@@ -42,13 +43,15 @@ const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
       <NextNProgress />
       <RainbowKitProvider chains={appChains.chains} avatar={BlockieAvatar} theme={darkTheme()}>
         <ChakraProvider>
-          <div className="bg-primary flex flex-col min-h-screen text-primary-content font-space-grotesk">
-            <Navbar />
-            <main className="relative flex flex-col flex-1">
-              <Component {...pageProps} />
-            </main>
-            <Footer />
-          </div>
+          <AuthProvider>
+            <div className="bg-primary flex flex-col min-h-screen text-primary-content font-space-grotesk">
+              <Navbar />
+              <main className="relative flex flex-col flex-1">
+                <Component {...pageProps} />
+              </main>
+              <Footer />
+            </div>
+          </AuthProvider>
         </ChakraProvider>
         {/* <Toaster /> */}
       </RainbowKitProvider>

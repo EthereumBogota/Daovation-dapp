@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import * as React from "react";
+import { useRouter } from "next/router";
 import {
   Center,
   Modal,
@@ -14,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { useQRCode } from "next-qrcode";
 import { io } from "socket.io-client";
+import { useAuth } from "~~/context/Authcontext";
 
 const linkDownloadPolygonIDWalletApp =
   "https://0xpolygonid.github.io/tutorials/wallet/wallet-overview/#polygon-id-wallet-app";
@@ -40,8 +42,9 @@ function PolygonIDVerifier({
   const [verificationCheckComplete, setVerificationCheckComplete] = useState(false);
   const [verificationMessage, setVerfificationMessage] = useState("");
   const [socketEvents, setSocketEvents] = useState<any[]>([]);
+  const { isLoggedIn, login, logout } = useAuth();
   const { Canvas } = useQRCode();
-
+  const router = useRouter();
   const onOpenModal = () => {
     closeLoginModal();
     onOpen();
@@ -83,16 +86,20 @@ function PolygonIDVerifier({
       const currentSocketEvent = socketEvents[socketEvents.length - 1];
 
       if (currentSocketEvent.fn === "handleVerification") {
-        console.log("entrooo: ", currentSocketEvent.fn);
         if (currentSocketEvent.status === "IN_PROGRESS") {
           setIsHandlingVerification(true);
         } else {
           setIsHandlingVerification(false);
           setVerificationCheckComplete(true);
           if (currentSocketEvent.status === "DONE") {
+            console.log("Signin: ", currentSocketEvent.data);
+            console.log("Signin: ", currentSocketEvent.data.id);
+            localStorage.setItem("verifyid", currentSocketEvent.data.id);
+            login();
+
             setVerfificationMessage("✅ Verified proof");
             setTimeout(() => {
-              onVerificationResult(true);
+              reportVerificationResult(true);
             }, 2000);
             socket.close();
           } else {
@@ -102,6 +109,10 @@ function PolygonIDVerifier({
       }
     }
   }, [socket, socketEvents]);
+
+  const reportVerificationResult = (result: boolean | ((prevState: boolean) => boolean)) => {
+    onVerificationResult(result);
+  };
 
   function openInNewTab(url: string) {
     const win = window.open(url, "_blank");
