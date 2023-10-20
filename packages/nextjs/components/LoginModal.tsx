@@ -1,21 +1,9 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import PolygonIDVerifier from "./zkid/PolygonIDVerifier";
 
 export default function LoginModal(): React.ReactElement {
   const [provedAccessBirthday, setProvedAccessBirthday] = useState(false);
-  const router = useRouter();
-
-  useEffect(() => {
-    if (provedAccessBirthday) {
-      console.log("Access Birthday");
-      // const redirect = setTimeout(() => {
-      //   router.push("/events");
-      // }, 1000);
-      // return () => clearTimeout(redirect);
-    }
-  }, [provedAccessBirthday, router]);
 
   const closeLoginModal = () => {
     (document.getElementById("login-modal") as HTMLDialogElement).close();
@@ -38,13 +26,21 @@ export default function LoginModal(): React.ReactElement {
           <div className="flex flex-col justify-center items-center gap-2 my-4 flex-1">
             <p className="text-center p-3">Totally anonymous with</p>
             <PolygonIDVerifier
-              publicServerURL="https://562a-201-184-127-58.ngrok-free.app"
-              localServerURL="http://localhost:8080"
-              credentialType={"KYCAgeCredential"}
+              publicServerURL="https://daovationserver.onrender.com/"
+              localServerURL="https://daovationserver.onrender.com"
+              credentialType={"KYCCountryOfResidence"}
               issuerOrHowToLink={"https://issuer-demo.polygonid.me/main"}
               onVerificationResult={setProvedAccessBirthday}
               closeLoginModal={closeLoginModal}
             />
+            {/*    <PolygonIDVerifier
+              publicServerURL="https://039d-201-184-127-58.ngrok-free.app/"
+              localServerURL="http://localhost:8080"
+              credentialType={"KYCCountryOfResidence"}
+              issuerOrHowToLink={"https://issuer-demo.polygonid.me/main"}
+              onVerificationResult={setProvedAccessBirthday}
+              closeLoginModal={closeLoginModal}
+            /> */}
           </div>
         </div>
       </div>

@@ -2,10 +2,12 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import LoginModal from "./LoginModal";
+import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
+import { useAuth } from "~~/context/Authcontext";
 
 export default function Navbar(): React.ReactElement {
   const [open, setOpen] = useState(false);
-
+  const { isLoggedIn, login, logout } = useAuth();
   const openLoginModal = () => {
     (document.getElementById("login-modal") as HTMLDialogElement).showModal();
   };
@@ -30,9 +32,18 @@ export default function Navbar(): React.ReactElement {
           </Link>
         </ul>
 
-        <button className="btn md:block hidden" onClick={openLoginModal}>
-          Log in
-        </button>
+        {isLoggedIn ? (
+          <>
+            <RainbowKitCustomConnectButton />
+            <button className="btn  block mx-auto" onClick={logout}>
+              Log out
+            </button>
+          </>
+        ) : (
+          <button className="btn block mx-auto" onClick={openLoginModal}>
+            Log in
+          </button>
+        )}
       </div>
 
       <div
@@ -50,9 +61,20 @@ export default function Navbar(): React.ReactElement {
         open ? "right-0 block" : "right-0 hidden"
       }`}
       >
-        <button className="btn md:hidden block mx-auto" onClick={openLoginModal}>
-          Log in
-        </button>
+        {isLoggedIn ? (
+          <>
+            {" "}
+            <RainbowKitCustomConnectButton />{" "}
+            <button className="btn md:hidden block mx-auto" onClick={logout}>
+              Log out
+            </button>{" "}
+          </>
+        ) : (
+          <button className="btn md:hidden block mx-auto" onClick={openLoginModal}>
+            Log in
+          </button>
+        )}
+
         <ul className="flex flex-col justify-center h-[300px] gap-10 text-lg text-center">
           <Link href={"/"} className="hover:text-blue-300">
             <li onClick={() => setOpen(!open)}>Home</li>
