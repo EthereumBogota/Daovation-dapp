@@ -119,10 +119,6 @@ function PolygonIDVerifier({
     win?.focus();
   }
 
-  const logSessionId = () => {
-    alert(sessionId);
-  };
-
   return (
     <>
       <div>
@@ -132,7 +128,6 @@ function PolygonIDVerifier({
           </button>
         ) : (
           <>
-            <button onClick={logSessionId}> ver sesion</button>
             <Spinner />
           </>
         )}

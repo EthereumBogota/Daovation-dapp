@@ -6,9 +6,10 @@ export default function EventModal({
   dao,
   location,
   id,
-  start_date,
-  end_date,
+  startDate,
+  endDate,
   description,
+  capacity,
 }: Event): React.ReactElement {
   const closeLoginModal = () => {
     (document.getElementById(`event-${id}`) as HTMLDialogElement).close();
@@ -30,7 +31,7 @@ export default function EventModal({
           <div className="flex justify-center gap-4">
             <h2 className="font-bold">Date:</h2>
             <p className="text-white">
-              {start_date} - {end_date}
+              {startDate} - {endDate}
             </p>
           </div>
           <div className="flex justify-center gap-4">

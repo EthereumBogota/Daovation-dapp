@@ -22,7 +22,7 @@ export default function EventCard({ event, isLast }: TEventCardProps): React.Rea
         className="w-32 h-20 self-center md:w-48 md:h-32 lg:w-64 rounded-xl cursor-pointer"
       />
       <div className="flex flex-col justify-center text-right cursor-pointer" onClick={openEventModal}>
-        <p className="text-customBlue text-[10px] md:text-sm line-clamp-1">{event.start_date}</p>
+        <p className="text-customBlue text-[10px] md:text-sm line-clamp-1">{event.startDate}</p>
         <h2 className="text-sm md:text-lg text-white font-bold line-clamp-2">{event.title}</h2>
         <h3 className="text-customGold text-[10px] md:text-lg">{event.dao}</h3>
         <h3 className="text-white text-[10px] md:text-lg line-clamp-1">{event.location}</h3>
@@ -32,9 +32,10 @@ export default function EventCard({ event, isLast }: TEventCardProps): React.Rea
         dao={event.dao}
         location={event.location}
         id={event.id}
-        start_date={event.start_date}
-        end_date={event.end_date}
-        description="defe"
+        startDate={event.startDate}
+        endDate={event.endDate}
+        description={event.description}
+        capacity={event.capacity}
       />
     </section>
   );

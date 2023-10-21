@@ -5,42 +5,46 @@ import type { NextPage } from "next";
 import EventCard from "~~/components/eventsPage/EventCard";
 
 export type Event = {
-  id: number;
-  start_date: string;
-  end_date: string;
-  title: string;
-  dao: string;
-  location: string;
-  description: string;
+  id?: string;
+  startDate?: number | string;
+  endDate?: number | string;
+  title?: string;
+  dao?: string;
+  location?: string;
+  description?: string;
+  capacity?: number;
 };
 
 const events: Event[] = [
   {
-    id: 1,
+    id: "1",
     title: "Side Event Blockchain Summit Latam 2023",
-    start_date: "October 5th, 2023 at 6:00pm",
-    end_date: "October 5th, 2023 at 8:00pm",
+    startDate: 2,
+    endDate: 2,
     description: "lorem smwomdpmdpmdpemdpempdmepdmpemdpemdepdmpedmpedmpemdpe",
     dao: "Ethereum Bogota",
     location: "Life 72 - AV. caracas # 71 - 44",
+    capacity: 10,
   },
   {
-    id: 1,
+    id: "1",
     title: "Side Event Blockchain Summit Latam 2023",
-    start_date: "October 5th, 2023 at 6:00pm",
-    end_date: "October 5th, 2023 at 8:00pm",
+    startDate: 36,
+    endDate: 36,
     description: "lorem smwomdpmdpmdpemdpempdmepdmpemdpemdepdmpedmpedmpemdpe",
     dao: "Ethereum Bogota",
     location: "Life 72 - AV. caracas # 71 - 44",
+    capacity: 10,
   },
   {
-    id: 1,
+    id: "1",
     title: "Side Event Blockchain Summit Latam 2023",
-    start_date: "October 5th, 2023 at 6:00pm",
-    end_date: "October 5th, 2023 at 8:00pm",
+    startDate: 239,
+    endDate: 239,
     description: "lorem smwomdpmdpmdpemdpempdmepdmpemdpemdepdmpedmpedmpemdpe",
     dao: "Ethereum Bogota",
     location: "Life 72 - AV. caracas # 71 - 44",
+    capacity: 10,
   },
 ];
 
