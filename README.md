@@ -1,11 +1,9 @@
-# DAOvation
+# <img src="packages/nextjs/public/2310LogoDAOvation (1).png" width="120"> DAOvation
 
 ## Transforming Governance with Active Participation
 
 * ### Fostering interactions between DAOs and members through community events
 * ### Reshape decision-making dynamics, emphasizing the value of active community participation
-
-Find our contracts here | https://github.com/EthereumBogota/daovation-contracts
 
 ## How it works
 
@@ -18,9 +16,9 @@ Find our contracts here | https://github.com/EthereumBogota/daovation-contracts
 
 ### For Members
 
-
-* Log in to DAOvation through an EOA or Polygon ID
+* Log in to **DAOvation** through an EOA or Polygon ID
 * Empowering Governance with Dynamic NFTs
 * Granting voting power proportionate to their active participation
 * Ensuring Privacy with Polygon ID and ZKPs
 
+<img src="packages/nextjs/public/DAOvation-ETHOnline.png" width="1100">
