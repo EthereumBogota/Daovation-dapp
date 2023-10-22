@@ -1,4 +1,6 @@
-# <img src="packages/nextjs/public/2310LogoDAOvation (1).png" width="120"> DAOvation
+<img src="packages/nextjs/public/2310LogoDAOvation (1).png" width="120">
+
+# DAOvation
 
 ## Transforming Governance with Active Participation
 
@@ -21,4 +23,14 @@
 * Granting voting power proportionate to their active participation
 * Ensuring Privacy with Polygon ID and ZKPs
 
+### Contracts
+Even though the implementationn in the demo is not fully accomplished, the logic in the smart contract 
+so the user can register to an event, do a small staking when registering to an event, among others.
+The logic in those contracts can be found here:
+
+* [Event creation contract](https://github.com/EthereumBogota/Daovation-dapp/blob/contract-implementation/packages/hardhat/contracts/AppEventFactory.sol) 
+* [Attendance staking contract](https://github.com/EthereumBogota/Daovation-dapp/blob/contract-implementation/packages/hardhat/contracts/AppNFTGenerator.sol) 
+* [Dynamic NFT with Chainlink + Tableland contract](https://github.com/EthereumBogota/Daovation-dapp/blob/contract-implementation/packages/hardhat/contracts/AppNFT.sol) 
+
 <img src="packages/nextjs/public/DAOvation-ETHOnline.png" width="1100">
+
