@@ -119,10 +119,6 @@ function PolygonIDVerifier({
     win?.focus();
   }
 
-  const logSessionId = () => {
-    alert(sessionId);
-  };
-
   return (
     <>
       <div>
@@ -132,7 +128,6 @@ function PolygonIDVerifier({
           </button>
         ) : (
           <>
-            <button onClick={logSessionId}> ver sesion</button>
             <Spinner />
           </>
         )}
@@ -182,18 +177,18 @@ function PolygonIDVerifier({
                 {qrCodeData.body.reason && <p>Reason: {qrCodeData.body.reason}</p>} */}
               </ModalBody>
 
-              <ModalFooter display={"flex"} justifyContent={"space-between"}>
+              <ModalFooter display={"flex"} justifyContent={"center"}>
                 <button
-                  className="btn bg-purple-600 border-none m-2 hover:bg-purple-700 text-[.6em] md:text-[.65em] normal-case"
+                  className="btn bg-purple-600 border-none m-2 hover:bg-purple-700 text-[.8em] md:text-[.95em] normal-case"
                   onClick={() => openInNewTab(linkDownloadPolygonIDWalletApp)}
                 >
-                  Download the Polygon ID Wallet App {/* <ExternalLinkIcon marginLeft={2} /> */}
+                  Download Polygon ID
                 </button>
                 <button
-                  className="btn bg-purple-600 border-none m-2 hover:bg-purple-700 text-[.6em] md:text-[.65em] normal-case"
+                  className="btn bg-purple-600 border-none m-2 hover:bg-purple-700 text-[.8em] md:text-[.95em] normal-case"
                   onClick={() => openInNewTab(issuerOrHowToLink)}
                 >
-                  Get a {credentialType} VC {/* <ExternalLinkIcon marginLeft={2} /> */}
+                  Get Credential
                 </button>
               </ModalFooter>
             </ModalContent>

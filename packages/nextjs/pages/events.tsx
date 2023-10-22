@@ -5,38 +5,46 @@ import type { NextPage } from "next";
 import EventCard from "~~/components/eventsPage/EventCard";
 
 export type Event = {
-  id: number;
-  title: string;
-  date: string;
-  image: string;
-  dao: string;
-  location: string;
+  id?: string;
+  startDate?: number | string;
+  endDate?: number | string;
+  title?: string;
+  dao?: string;
+  location?: string;
+  description?: string;
+  capacity?: number;
 };
 
 const events: Event[] = [
   {
-    id: 1,
+    id: "1",
     title: "Side Event Blockchain Summit Latam 2023",
-    date: "October 5th, 2023 at 6:00pm",
-    image: "/event1.jpg",
+    startDate: 2,
+    endDate: 2,
+    description: "lorem smwomdpmdpmdpemdpempdmepdmpemdpemdepdmpedmpedmpemdpe",
     dao: "Ethereum Bogota",
     location: "Life 72 - AV. caracas # 71 - 44",
+    capacity: 10,
   },
   {
-    id: 2,
-    title: "Curso de Solidity básico",
-    date: "October 14th, 2023 at 2:00pm",
-    image: "/event2.png",
+    id: "1",
+    title: "Side Event Blockchain Summit Latam 2023",
+    startDate: 36,
+    endDate: 36,
+    description: "lorem smwomdpmdpmdpemdpempdmepdmpemdpemdepdmpedmpedmpemdpe",
     dao: "Ethereum Bogota",
-    location: "Utadeo - Carrera 4 # 22 - 60",
+    location: "Life 72 - AV. caracas # 71 - 44",
+    capacity: 10,
   },
   {
-    id: 3,
-    title: "Preámbulo voluntariado de la Blokchain Summit Latam",
-    date: "September 14th, 2023 at 9:00am",
-    image: "/event3.png",
+    id: "1",
+    title: "Side Event Blockchain Summit Latam 2023",
+    startDate: 239,
+    endDate: 239,
+    description: "lorem smwomdpmdpmdpemdpempdmepdmpemdpemdepdmpedmpedmpemdpe",
     dao: "Ethereum Bogota",
-    location: "Restaurante bitácora - Carrera 19 # 134 - 69",
+    location: "Life 72 - AV. caracas # 71 - 44",
+    capacity: 10,
   },
 ];
 

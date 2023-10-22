@@ -1,9 +1,22 @@
 import Image from "next/image";
 import router from "next/router";
+import CreateEventModal from "./CreateEventModal";
+import MustLoginModal from "./MustLoginModal";
+import { useAuth } from "~~/context/Authcontext";
 
 export default function LandingCards(): React.ReactElement {
+  const { isLoggedIn } = useAuth();
+
   const goToEvents = () => {
     router.push("/events");
+  };
+
+  const openEventModal = () => {
+    (document.getElementById(`must-login`) as HTMLDialogElement).showModal();
+  };
+
+  const openCreateEventModal = () => {
+    (document.getElementById(`create-event`) as HTMLDialogElement).showModal();
   };
 
   return (
@@ -16,7 +29,9 @@ export default function LandingCards(): React.ReactElement {
           <div className="flex flex-col items-center justify-center p-8 gap-8 flex-1 my-4">
             <Image src={"/create-event.svg"} alt="Create Event" width={120} height={120} />
             <h3 className="text-xl text-center">Empower Your DAO | Host Events with DAOvation</h3>
-            <button className="btn">Host event</button>
+            <button className="btn" onClick={isLoggedIn ? openCreateEventModal : openEventModal}>
+              Host event
+            </button>
           </div>
           <div className="divider md:divider-horizontal">OR</div>
           <div className="flex flex-col items-center justify-center p-8 gap-8 flex-1 my-4">
@@ -28,6 +43,8 @@ export default function LandingCards(): React.ReactElement {
           </div>
         </div>
       </div>
+      <MustLoginModal />
+      <CreateEventModal />
     </section>
   );
 }
